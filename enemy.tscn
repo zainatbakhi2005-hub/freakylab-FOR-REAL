@@ -1,0 +1,111 @@
+[gd_scene load_steps=18 format=3 uid="uid://dus0a15m8lmt"]
+
+[ext_resource type="Script" uid="uid://q2owufyrcnu" path="res://enemy.gd" id="1_4gyqm"]
+[ext_resource type="Texture2D" uid="uid://b28isb6363hlc" path="res://characters/Pixel_Sidescroller_Character/Spider Sprite Sheet/00_Spider Sprite Sheet.png" id="1_7k104"]
+[ext_resource type="Texture2D" uid="uid://dh6y50j6jsa1p" path="res://characters/Pixel_Sidescroller_Character/Spider Sprite Sheet/01_Spider Sprite Sheet.png" id="3_n0g06"]
+[ext_resource type="Texture2D" uid="uid://cnw6efcdryor6" path="res://characters/Pixel_Sidescroller_Character/Spider Sprite Sheet/02_Spider Sprite Sheet.png" id="4_ar8e5"]
+[ext_resource type="Texture2D" uid="uid://bdfbypcsddj4" path="res://characters/Pixel_Sidescroller_Character/Spider Sprite Sheet/03_Spider Sprite Sheet.png" id="5_doop2"]
+[ext_resource type="Texture2D" uid="uid://ch67fbf8k6jqd" path="res://characters/Pixel_Sidescroller_Character/Spider Sprite Sheet/04_Spider Sprite Sheet.png" id="6_5hcft"]
+[ext_resource type="Texture2D" uid="uid://b5qtvbtodylrv" path="res://characters/Pixel_Sidescroller_Character/Spider Sprite Sheet/54_Spider Sprite Sheet.png" id="7_nnovl"]
+[ext_resource type="Texture2D" uid="uid://c5p6sk80byu8q" path="res://characters/Pixel_Sidescroller_Character/Spider Sprite Sheet/55_Spider Sprite Sheet.png" id="8_jmwgi"]
+[ext_resource type="Texture2D" uid="uid://dfw40848ngijy" path="res://characters/Pixel_Sidescroller_Character/Spider Sprite Sheet/56_Spider Sprite Sheet.png" id="9_g2u8i"]
+[ext_resource type="Texture2D" uid="uid://4avfd3w3yh1q" path="res://characters/Pixel_Sidescroller_Character/Spider Sprite Sheet/60_Spider Sprite Sheet.png" id="10_otto8"]
+[ext_resource type="Texture2D" uid="uid://cbscqgife11jy" path="res://characters/Pixel_Sidescroller_Character/Spider Sprite Sheet/61_Spider Sprite Sheet.png" id="11_8q82m"]
+[ext_resource type="Texture2D" uid="uid://lb7yihfc3ly7" path="res://characters/Pixel_Sidescroller_Character/Spider Sprite Sheet/62_Spider Sprite Sheet.png" id="12_epc7x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
+size = Vector2(18, 12.75)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gyqm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qi2p4"]
+bg_color = Color(0.513726, 0, 0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4gyqm"]
+radius = 19.0263
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o7rgc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7k104")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_n0g06")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ar8e5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_doop2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5hcft")
+}],
+"loop": true,
+"name": &"crawl",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_nnovl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jmwgi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_g2u8i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_otto8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8q82m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8q82m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_epc7x")
+}],
+"loop": false,
+"name": &"spiderdie",
+"speed": 5.0
+}]
+
+[node name="enemy" type="CharacterBody2D"]
+script = ExtResource("1_4gyqm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_4gyqm")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -13.0
+offset_top = -13.0
+offset_right = 13.0
+offset_bottom = -10.0
+theme_override_styles/background = SubResource("StyleBoxFlat_4gyqm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qi2p4")
+max_value = 20.0
+value = 20.0
+show_percentage = false
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_4gyqm")
+
+[node name="enemysprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3.8147e-06, -4.76837e-07)
+sprite_frames = SubResource("SpriteFrames_o7rgc")
+animation = &"crawl"
+frame_progress = 0.926449
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://hs0xlflr13wg"]
+
+[ext_resource type="Script" uid="uid://bmtl35k021aqe" path="res://bullet.gd" id="1_v8qja"]
+[ext_resource type="Texture2D" uid="uid://dkrxbxbqq6uwi" path="res://tileset/tiles_laboratory_LandOfPixels/48px/projectile01-straight1.png" id="2_t4vbm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2b2rl"]
+size = Vector2(22, 11)
+
+[node name="bullet" type="Area2D"]
+script = ExtResource("1_v8qja")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 2)
+scale = Vector2(1.75, 2.25)
+texture = ExtResource("2_t4vbm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_2b2rl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

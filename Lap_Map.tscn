@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://crh7kvson5a6q"]
+
+[ext_resource type="Texture2D" uid="uid://cijoyrhp17vrs" path="res://tileset/tiles_laboratory_LandOfPixels/examples/LabFitting01.png" id="1_c3an6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w71eq"]
+size = Vector2(28, 15.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c3an6"]
+size = Vector2(150, 22)
+
+[node name="LapMap" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(75, 174)
+texture = ExtResource("1_c3an6")
+
+[node name="walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="walls"]
+position = Vector2(-5, 42)
+polygon = PackedVector2Array(210, -56, 210, -23, 165, -58, 168, -92, 294, -89)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="walls"]
+position = Vector2(-3, 43)
+polygon = PackedVector2Array(389, 399, 390, 359, 385, 340, 342, 341, 341, 331, 388, 332, 391, 318, 341, 320, 200, 319, 197, 392, 150, 394, -61, 405, 210, 404)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="walls"]
+position = Vector2(-2, 38)
+polygon = PackedVector2Array(319, -60, 374, -80, 375, 75, 354, 70, 354, 171, 354, 185, 371, 187, 374, 231, 440, 234, 438, 260, 464, 255, 467, 270, 512, 266, 516, 291, 439, 287, 439, 319, 516, 316, 520, 360, 500, 359, 507, 376, 532, 376, 532, 202, 490, 200, 486, 187, 389, 186, 393, 70, 532, 69, 531, -90, 390, -83, 389, -107, 291, -106)
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="walls"]
+position = Vector2(-287, 31.75)
+shape = SubResource("RectangleShape2D_w71eq")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="walls"]
+position = Vector2(301, -32)
+shape = SubResource("RectangleShape2D_c3an6")
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="walls"]
+polygon = PackedVector2Array(-371, -77, -375, 142, -302, 142, -301, 170, -302, 189, -302, 272, -306, 279, -307, 316, -363, 315, -364, 430, 131, 429, 130, 406, 149, 407, 148, 430, 195, 430, 195.716, 364.126, 199, 357, 204, 428, 139, 443, -381, 444, -381, 272, -317, 272, -319, 157, -383, 157, -380, -98, -16, -97, -14, 26, 116, 28, 116, 51, 147, 45, 150, -5, 162, -8, 162, 49, 163, 55, 162, 62, 142, 62, 129, 61, 99, 38, -17, 35, -30, -53, -195, -61, -268, -64, -301, -63, -371, -65)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="walls"]
+polygon = PackedVector2Array(-252, 143, -253, 172, -253, 186, -251, 268, -250, 278, -252, 316, -234, 315, -112, 320, -109, 300, 2, 302, 6, 318, 132, 316, 138, 313, 142, 310, 145, 295, 157, 287, 170, 279, 143, 281, 146, 236, 162, 236, 164, 142, 67, 143, 67, 128, -27, 130, -27, 142, -240, 143)

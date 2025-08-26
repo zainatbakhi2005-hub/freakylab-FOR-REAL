@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://yegmh4o2ecg6"]
+
+[ext_resource type="PackedScene" uid="uid://crh7kvson5a6q" path="res://Lap_Map.tscn" id="1_0f027"]
+[ext_resource type="PackedScene" uid="uid://dqgyl2esi6sfo" path="res://player.tscn" id="2_2c62f"]
+[ext_resource type="PackedScene" uid="uid://dus0a15m8lmt" path="res://enemy.tscn" id="3_gyfs4"]
+[ext_resource type="Script" uid="uid://cxruyr4cdnsg6" path="res://enemy_spawner.gd" id="4_d5x1h"]
+
+[node name="MainScene" type="Node2D"]
+position = Vector2(-2721, -2701)
+
+[node name="LapMap" parent="." instance=ExtResource("1_0f027")]
+position = Vector2(3188, 2860)
+
+[node name="enemy" parent="." instance=ExtResource("3_gyfs4")]
+position = Vector2(3092, 2850)
+slide_on_ceiling = false
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("2_2c62f")]
+position = Vector2(2874, 2952)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(3, 3)
+
+[node name="EnemySpawner" type="Node2D" parent="."]
+position = Vector2(2910, 3070)
+script = ExtResource("4_d5x1h")
+spawn_interval = 2.0
+
+[node name="spawn1" type="Node2D" parent="EnemySpawner"]
+position = Vector2(183, 162)
+
+[node name="spawn2" type="Node2D" parent="EnemySpawner"]
+position = Vector2(538, 30)
+
+[node name="spawn3" type="Node2D" parent="EnemySpawner"]
+position = Vector2(561, -191)
