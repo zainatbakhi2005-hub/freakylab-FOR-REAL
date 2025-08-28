@@ -14,7 +14,7 @@ size = Vector2(150, 22)
 position = Vector2(75, 174)
 texture = ExtResource("1_c3an6")
 
-[node name="walls" type="StaticBody2D" parent="."]
+[node name="walls" type="StaticBody2D" parent="." groups=["walls"]]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="walls"]
 position = Vector2(-5, 42)

@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://bmtl35k021aqe" path="res://bullet.gd" id="1_v8qja"]
 [ext_resource type="Texture2D" uid="uid://dkrxbxbqq6uwi" path="res://tileset/tiles_laboratory_LandOfPixels/48px/projectile01-straight1.png" id="2_t4vbm"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2b2rl"]
-size = Vector2(22, 11)
+[sub_resource type="CircleShape2D" id="CircleShape2D_v8qja"]
+radius = 19.0066
 
-[node name="bullet" type="Area2D"]
+[node name="Bullet" type="Area2D"]
 script = ExtResource("1_v8qja")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -16,6 +16,6 @@ texture = ExtResource("2_t4vbm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0.5)
-shape = SubResource("RectangleShape2D_2b2rl")
+shape = SubResource("CircleShape2D_v8qja")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,19 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://yegmh4o2ecg6"]
+[gd_scene load_steps=8 format=3 uid="uid://yegmh4o2ecg6"]
 
 [ext_resource type="PackedScene" uid="uid://crh7kvson5a6q" path="res://Lap_Map.tscn" id="1_0f027"]
 [ext_resource type="PackedScene" uid="uid://dqgyl2esi6sfo" path="res://player.tscn" id="2_2c62f"]
 [ext_resource type="PackedScene" uid="uid://dus0a15m8lmt" path="res://enemy.tscn" id="3_gyfs4"]
 [ext_resource type="Script" uid="uid://cxruyr4cdnsg6" path="res://enemy_spawner.gd" id="4_d5x1h"]
+[ext_resource type="PackedScene" uid="uid://bvueho12bdyc8" path="res://Medkit.tscn" id="5_8mm7a"]
+[ext_resource type="Script" uid="uid://wbwwb7rrggai" path="res://medkit_spawns.gd" id="5_hq1ik"]
+[ext_resource type="AudioStream" uid="uid://ctids4xy8ohy1" path="res://Relic Hunters Zero： Remix ｜ Main Theme.wav" id="7_nfk4m"]
 
 [node name="MainScene" type="Node2D"]
-position = Vector2(-2721, -2701)
+position = Vector2(-2720, -2701)
 
 [node name="LapMap" parent="." instance=ExtResource("1_0f027")]
 position = Vector2(3188, 2860)
 
 [node name="enemy" parent="." instance=ExtResource("3_gyfs4")]
-position = Vector2(3092, 2850)
+position = Vector2(2965, 2862)
 slide_on_ceiling = false
+speed = 70.0
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("2_2c62f")]
 position = Vector2(2874, 2952)
@@ -24,13 +28,37 @@ zoom = Vector2(3, 3)
 [node name="EnemySpawner" type="Node2D" parent="."]
 position = Vector2(2910, 3070)
 script = ExtResource("4_d5x1h")
-spawn_interval = 2.0
+spawn_interval = 3.0
 
 [node name="spawn1" type="Node2D" parent="EnemySpawner"]
-position = Vector2(183, 162)
+position = Vector2(628, -216)
 
 [node name="spawn2" type="Node2D" parent="EnemySpawner"]
-position = Vector2(538, 30)
+position = Vector2(367, 166)
 
 [node name="spawn3" type="Node2D" parent="EnemySpawner"]
-position = Vector2(561, -191)
+position = Vector2(187, -216)
+
+[node name="spawn4" type="Node2D" parent="EnemySpawner"]
+position = Vector2(-27, 166)
+
+[node name="MedkitSpawns" type="Node2D" parent="." node_paths=PackedStringArray("spawn_points")]
+position = Vector2(2961, 3228)
+script = ExtResource("5_hq1ik")
+medkit_scene = ExtResource("5_8mm7a")
+spawn_points = [NodePath("medsp1"), NodePath("med2"), NodePath("med3")]
+
+[node name="medsp1" type="Node2D" parent="MedkitSpawns"]
+position = Vector2(101, -366)
+
+[node name="med2" type="Node2D" parent="MedkitSpawns"]
+
+[node name="med3" type="Node2D" parent="MedkitSpawns"]
+position = Vector2(608, -48)
+
+[node name="Medkit" parent="." instance=ExtResource("5_8mm7a")]
+position = Vector2(3133, 2985)
+
+[node name="themeMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_nfk4m")
+autoplay = true

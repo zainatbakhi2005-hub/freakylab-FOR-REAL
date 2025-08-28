@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ds33q5h4e70ns"
+path="res://.godot/imported/Relic Hunters Zero_ Remix  Main Theme.mp3-2934dd5736a6685ebb7ed4ff0ca1a7b3.mp3str"
+
+[deps]
+
+source_file="res://Relic Hunters Zero_ Remix  Main Theme.mp3"
+dest_files=["res://.godot/imported/Relic Hunters Zero_ Remix  Main Theme.mp3-2934dd5736a6685ebb7ed4ff0ca1a7b3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

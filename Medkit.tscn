@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvueho12bdyc8"]
+
+[ext_resource type="Texture2D" uid="uid://c7w1o7u0qck" path="res://characters/Pixel_Sidescroller_Character/med.png" id="1_icouj"]
+[ext_resource type="Script" uid="uid://c2mxboeuchnin" path="res://medkit.gd" id="1_p1bxr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1bxr"]
+size = Vector2(9.65625, 17.6367)
+
+[node name="Medkit" type="Area2D"]
+script = ExtResource("1_p1bxr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.42109e-14, 0)
+scale = Vector2(0.0344792, 0.0360417)
+texture = ExtResource("1_icouj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_p1bxr")
