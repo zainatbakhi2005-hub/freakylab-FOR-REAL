@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://ctids4xy8ohy1" path="res://Relic Hunters Zero： Remix ｜ Main Theme.wav" id="7_nfk4m"]
 
 [node name="MainScene" type="Node2D"]
-position = Vector2(-2720, -2701)
+position = Vector2(-2720, -2703)
 
 [node name="LapMap" parent="." instance=ExtResource("1_0f027")]
 position = Vector2(3188, 2860)

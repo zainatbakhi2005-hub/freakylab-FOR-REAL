@@ -12,18 +12,15 @@ var damage_display_time: float = 0.3
 var damage_timer: float = 0.0
 
 var controls_reversed: bool = false
-var flip_timer: float = 0.0
-var flip_interval: float = 5.0
 
-# New: mechanics change timer
-var mechanic_timer: float = 15.0  # every 15 seconds
+# Timer for reversing controls every 60 seconds
+var mechanic_timer: float = 60.0  # first reversal after 60 sec
 
 func _ready() -> void:
 	current_health = max_health
 	health_bar.max_value = max_health
 	health_bar.value = current_health
 	add_to_group("player")
-	flip_timer = flip_interval
 
 func _physics_process(delta: float) -> void:
 	# Damaged animation timer
@@ -32,17 +29,11 @@ func _physics_process(delta: float) -> void:
 		if damage_timer <= 0:
 			is_damaged = false
 
-	# Control flip timer
-	flip_timer -= delta
-	if flip_timer <= 0:
-		controls_reversed = not controls_reversed
-		flip_timer = flip_interval
-
-	# Mechanics timer
+	# Mechanics timer (reverse controls every 60 sec)
 	mechanic_timer -= delta
 	if mechanic_timer <= 0:
-		change_mechanics()
-		mechanic_timer = 15.0  # reset timer
+		controls_reversed = not controls_reversed
+		mechanic_timer = 60.0  # reset timer
 
 	# Movement
 	var input_vector := Vector2.ZERO
@@ -79,15 +70,6 @@ func _physics_process(delta: float) -> void:
 			if e.global_position.distance_to(mouse_pos) < 50:
 				if e.has_method("take_damage"):
 					e.take_damage(1)
-
-# Function called every 15 seconds
-func change_mechanics() -> void:
-	# Example changes:
-	# 1. Randomize speed between 150-250
-	speed = randi() % 100 + 150
-	# 2. Toggle control flip
-	controls_reversed = not controls_reversed
-	print("Mechanics changed! Speed:", speed, "Controls reversed:", controls_reversed)
 
 # Player takes damage from enemy
 func take_damage(amount: int) -> void:
